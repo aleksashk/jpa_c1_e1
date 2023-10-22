@@ -1,7 +1,6 @@
 package by.flameksandr.jpa_c1_e1;
 
 
-import by.flameksandr.jpa_c1_e1.entities.Product;
 import by.flameksandr.jpa_c1_e1.persistance.CustomPersistenceUnitInfo;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
@@ -20,10 +19,7 @@ public class JpaC1E1Application {
 
         try {
             em.getTransaction().begin();
-            Product product = new Product();
-            product.setId(2);
-            product.setName("Chocolate");
-            em.persist(product);
+
             em.getTransaction().commit();
         } finally {
             em.close();

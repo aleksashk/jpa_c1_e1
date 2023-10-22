@@ -2,13 +2,13 @@ package by.flameksandr.jpa_c1_e1.entities;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 @Entity
-public class Product {
-
+@Table(name = "employee")
+public class Employee {
     @Id
     private int id;
-
     private String name;
 
     public int getId() {
