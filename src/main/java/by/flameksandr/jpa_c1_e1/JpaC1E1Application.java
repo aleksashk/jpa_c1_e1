@@ -26,6 +26,8 @@ public class JpaC1E1Application {
 
         try {
             em.getTransaction().begin();
+            Employee employee = em.find(Employee.class, 1);
+            System.out.println(employee);
 
 //            em.persist();       -> Adding an entity in the context
 //            em.find();          -> Finds by PK. Get from DB and add it to the context if it doesn't already exist
