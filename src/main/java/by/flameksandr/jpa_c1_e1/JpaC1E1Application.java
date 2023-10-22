@@ -30,6 +30,7 @@ public class JpaC1E1Application {
             //find vs getReference
 //            var e1 = em.find(Employee.class, 1);
             var e2 = em.getReference(Employee.class, 1);
+            System.out.println(e2);
 
 //            em.persist();       -> Adding an entity in the context
 //            em.find();          -> Finds by PK. Get from DB and add it to the context if it doesn't already exist
