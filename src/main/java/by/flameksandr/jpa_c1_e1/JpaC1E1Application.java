@@ -15,7 +15,6 @@ public class JpaC1E1Application {
         EntityManagerFactory emf = new HibernatePersistenceProvider()
                 .createContainerEntityManagerFactory(new CustomPersistenceUnitInfo(),
                         new HashMap());
-//        EntityManagerFactory emf = Persistence.createEntityManagerFactory("my-persistence-unit");
 
         EntityManager em = emf.createEntityManager();
 
