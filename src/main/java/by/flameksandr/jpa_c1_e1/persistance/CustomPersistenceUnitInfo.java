@@ -13,6 +13,13 @@ import java.util.List;
 import java.util.Properties;
 
 public class CustomPersistenceUnitInfo implements PersistenceUnitInfo {
+
+    private final String puName;
+
+    public CustomPersistenceUnitInfo(String puName) {
+        this.puName = puName;
+    }
+
     @Override
     public String getPersistenceUnitName() {
         return "my-persistence-unit";
