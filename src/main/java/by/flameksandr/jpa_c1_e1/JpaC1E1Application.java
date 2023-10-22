@@ -22,6 +22,7 @@ public class JpaC1E1Application {
             em.getTransaction().begin();
 
             Employee employee = em.find(Employee.class, 1);
+            employee.setName("Aleksandr Philimonov");
             System.out.println(employee);
 
             em.getTransaction().commit();
