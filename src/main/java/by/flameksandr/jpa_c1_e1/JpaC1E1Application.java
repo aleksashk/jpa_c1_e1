@@ -26,7 +26,14 @@ public class JpaC1E1Application {
 
         try {
             em.getTransaction().begin();
-            Employee employee = em.find(Employee.class, 1);
+            var employee = new Employee();
+            employee.setId(1);
+            employee.setName("John");
+            employee.setAddress("Address");
+
+            em.persist(employee);
+
+            employee = em.find(Employee.class, 1);
             System.out.println(employee);
 
 //            em.persist();       -> Adding an entity in the context
