@@ -1,5 +1,6 @@
 package by.flameksandr.jpa_c1_e1.entities;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
@@ -8,8 +9,11 @@ import jakarta.persistence.Table;
 @Table(name = "employee")
 public class Employee {
     @Id
+    @Column(name = "id")
     private int id;
     private String name;
+
+    private String address;
 
     public int getId() {
         return id;
@@ -25,5 +29,13 @@ public class Employee {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 }
