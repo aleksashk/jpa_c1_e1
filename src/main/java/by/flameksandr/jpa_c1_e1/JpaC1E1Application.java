@@ -1,6 +1,7 @@
 package by.flameksandr.jpa_c1_e1;
 
 
+import by.flameksandr.jpa_c1_e1.entities.Employee;
 import by.flameksandr.jpa_c1_e1.persistance.CustomPersistenceUnitInfo;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
@@ -19,6 +20,9 @@ public class JpaC1E1Application {
 
         try {
             em.getTransaction().begin();
+
+            Employee employee = em.find(Employee.class, 1);
+            System.out.println(employee);
 
             em.getTransaction().commit();
         } finally {
