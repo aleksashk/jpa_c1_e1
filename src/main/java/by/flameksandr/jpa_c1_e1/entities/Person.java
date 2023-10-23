@@ -12,6 +12,7 @@ public class Person {
     private String name;
 
     @OneToOne
+    @JoinColumn(name = "passport")
     private Passport passport;
 
     public int getId() {
