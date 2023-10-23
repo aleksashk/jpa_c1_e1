@@ -1,8 +1,8 @@
 package by.flameksandr.jpa_c1_e1;
 
 
-import by.flameksandr.jpa_c1_e1.entities.Student;
-import by.flameksandr.jpa_c1_e1.entities.keys.StudentKey;
+import by.flameksandr.jpa_c1_e1.entities.Passport;
+import by.flameksandr.jpa_c1_e1.entities.Person;
 import by.flameksandr.jpa_c1_e1.persistance.CustomPersistenceUnitInfo;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
@@ -17,7 +17,7 @@ public class JpaC1E1Application {
         String puName = "pu-name";
         Map<String, String> props = new HashMap<>();
         props.put("hibernate.show_sql", "true");
-        props.put("hibernate.hbm2ddl.auto", "none");//create, none, update
+        props.put("hibernate.hbm2ddl.auto", "create");//create, none, update
 
         EntityManagerFactory emf = new HibernatePersistenceProvider()
                 .createContainerEntityManagerFactory(new CustomPersistenceUnitInfo(puName),
@@ -28,17 +28,16 @@ public class JpaC1E1Application {
         try {
             em.getTransaction().begin();
 
-            StudentKey id = new StudentKey();
-            id.setCode("ABC");
-            id.setNumber(23);
+            Person person = new Person();
+            person.setName("Simon");
 
-//            Student student = new Student();
-//            student.setId(id);
-//            student.setName("Alex");
-//
-//            em.persist(student);
-            Student student = em.find(Student.class, id);
-            System.out.println(student);
+            Passport passport = new Passport();
+            passport.setNumber("ABC12345");
+
+            person.setPassport(passport);
+
+            em.persist(person);
+            em.persist(passport);
 
             em.getTransaction().commit();
         } finally {
