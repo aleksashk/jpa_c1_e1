@@ -1,25 +1,28 @@
 package by.flameksandr.jpa_c1_e1.entities;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.Inheritance;
-import jakarta.persistence.InheritanceType;
+
+import java.math.BigDecimal;
 
 @Entity
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-public abstract class Product {
-
+public class Product {
     @Id
-    protected int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-    protected String name;
+    private String name;
 
-    public int getId() {
-        return id;
+    private BigDecimal price;
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public Long getId() {
+        return id;
     }
 
     public String getName() {
@@ -30,10 +33,20 @@ public abstract class Product {
         this.name = name;
     }
 
+    public BigDecimal getPrice() {
+        return price;
+    }
+
+    public void setPrice(BigDecimal price) {
+        this.price = price;
+    }
+
     @Override
     public String toString() {
         return "Product{" +
                 "id=" + id +
+                ", name='" + name + '\'' +
+                ", price=" + price +
                 '}';
     }
 }
