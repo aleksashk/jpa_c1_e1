@@ -16,7 +16,7 @@ public class JpaC1E1Application {
         String puName = "pu-name";
         Map<String, String> props = new HashMap<>();
         props.put("hibernate.show_sql", "true");
-        props.put("hibernate.hbm2ddl.auto", "create");
+        props.put("hibernate.hbm2ddl.auto", "create");//create, none, update
 
         EntityManagerFactory emf = new HibernatePersistenceProvider()
                 .createContainerEntityManagerFactory(new CustomPersistenceUnitInfo(puName),
@@ -27,28 +27,12 @@ public class JpaC1E1Application {
         try {
             em.getTransaction().begin();
 
-            //find vs getReference
-//            var e1 = em.find(Employee.class, 1);
-//            var e2 = em.getReference(Employee.class, 1);
-//            System.out.println(e2);
-//            e2.setName("Anne");
-//            System.out.println("Before " + e2);
-//
-//            em.refresh(e2);
-//            System.out.println("After " + e2);
+            Employee e1 = new Employee();
+            e1.setName("George");
+            e1.setAddress("AnyAddress");
 
-//            em.persist();       -> Adding an entity in the context
-//            em.find();          -> Finds by PK. Get from DB and add it to the context if it doesn't already exist
-//            em.remove();        -> Marking entity for removal
-//            em.merge();         -> Merges an entity from outside the context to the context
-//            em.refresh();       -> Mirror the context from the adtabase
-//            em.detach();        -> Taking the entity out of the context
-//            em.getReference()   ->;
-
-            var e1 = new Employee();
-            e1.setName("Andry");
-            e1.setAddress("Mohilev");
             em.persist(e1);
+
             em.getTransaction().commit();
         } finally {
             em.close();
