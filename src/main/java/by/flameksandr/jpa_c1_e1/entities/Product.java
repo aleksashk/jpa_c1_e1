@@ -6,11 +6,13 @@ import jakarta.persistence.Inheritance;
 import jakarta.persistence.InheritanceType;
 
 @Entity
-@Inheritance(strategy = InheritanceType.JOINED)
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public abstract class Product {
 
     @Id
-    private int id;
+    protected int id;
+
+    protected String name;
 
     public int getId() {
         return id;
@@ -18,6 +20,14 @@ public abstract class Product {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     @Override
