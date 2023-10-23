@@ -1,7 +1,8 @@
 package by.flameksandr.jpa_c1_e1;
 
 
-import by.flameksandr.jpa_c1_e1.entities.Product;
+import by.flameksandr.jpa_c1_e1.entities.Student;
+import by.flameksandr.jpa_c1_e1.entities.keys.StudentKey;
 import by.flameksandr.jpa_c1_e1.persistance.CustomPersistenceUnitInfo;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
@@ -27,12 +28,15 @@ public class JpaC1E1Application {
         try {
             em.getTransaction().begin();
 
-            Product p1 = new Product();
-            p1.setCode("ABC");
-            p1.setNumber(10);
-            p1.setColor("White");
+            StudentKey id = new StudentKey();
+            id.setCode("ABC");
+            id.setNumber(23);
 
-            em.persist(p1);
+            Student student = new Student();
+            student.setId(id);
+            student.setName("Alex");
+
+            em.persist(student);
 
             em.getTransaction().commit();
         } finally {
