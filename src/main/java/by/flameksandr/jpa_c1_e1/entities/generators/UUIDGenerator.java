@@ -1,4 +1,4 @@
-package by.flameksandr.jpa_c1_e1.generators;
+package by.flameksandr.jpa_c1_e1.entities.generators;
 
 import org.hibernate.engine.spi.SharedSessionContractImplementor;
 import org.hibernate.id.IdentifierGenerator;

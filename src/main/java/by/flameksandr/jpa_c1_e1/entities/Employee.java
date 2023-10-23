@@ -1,6 +1,6 @@
 package by.flameksandr.jpa_c1_e1.entities;
 
-import by.flameksandr.jpa_c1_e1.generators.UUIDGenerator;
+import by.flameksandr.jpa_c1_e1.entities.generators.UUIDGenerator;
 import jakarta.persistence.*;
 import org.hibernate.annotations.GenericGenerator;
 

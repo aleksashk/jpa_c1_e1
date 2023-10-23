@@ -1,7 +1,7 @@
 package by.flameksandr.jpa_c1_e1;
 
 
-import by.flameksandr.jpa_c1_e1.entities.Employee;
+import by.flameksandr.jpa_c1_e1.entities.Product;
 import by.flameksandr.jpa_c1_e1.persistance.CustomPersistenceUnitInfo;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
@@ -27,11 +27,12 @@ public class JpaC1E1Application {
         try {
             em.getTransaction().begin();
 
-            Employee e1 = new Employee();
-            e1.setName("George");
-            e1.setAddress("AnyAddress");
+            Product p1 = new Product();
+            p1.setCode("ABC");
+            p1.setNumber(10);
+            p1.setColor("White");
 
-            em.persist(e1);
+            em.persist(p1);
 
             em.getTransaction().commit();
         } finally {
