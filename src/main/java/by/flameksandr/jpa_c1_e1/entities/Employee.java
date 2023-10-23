@@ -8,9 +8,9 @@ import org.hibernate.annotations.GenericGenerator;
 @Table(name = "employee")
 public class Employee {
     @Id
-    @Column(name = "id")
     @GenericGenerator(name = "UUIDGenerator", type = UUIDGenerator.class)
     @GeneratedValue(generator = "UUIDGenerator")
+    @Column(length = 500)
     private String id;
     private String name;
 
