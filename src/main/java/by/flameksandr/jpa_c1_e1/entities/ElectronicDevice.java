@@ -13,4 +13,11 @@ public class ElectronicDevice extends Product {
     public void setVoltage(int voltage) {
         this.voltage = voltage;
     }
+
+    @Override
+    public String toString() {
+        return "ElectronicDevice{" +
+                "voltage=" + voltage +
+                '}';
+    }
 }

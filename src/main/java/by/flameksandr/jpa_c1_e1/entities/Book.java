@@ -14,4 +14,11 @@ public class Book extends Product{
     public void setAuthor(String author) {
         this.author = author;
     }
+
+    @Override
+    public String toString() {
+        return "Book{" +
+                "author='" + author + '\'' +
+                '}';
+    }
 }
