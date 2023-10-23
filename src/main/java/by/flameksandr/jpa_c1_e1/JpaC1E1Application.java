@@ -1,8 +1,8 @@
 package by.flameksandr.jpa_c1_e1;
 
 
-import by.flameksandr.jpa_c1_e1.entities.Passport;
-import by.flameksandr.jpa_c1_e1.entities.Person;
+import by.flameksandr.jpa_c1_e1.entities.Comment;
+import by.flameksandr.jpa_c1_e1.entities.Post;
 import by.flameksandr.jpa_c1_e1.persistance.CustomPersistenceUnitInfo;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
@@ -28,17 +28,16 @@ public class JpaC1E1Application {
         try {
             em.getTransaction().begin();
 
-            Person person = new Person();
-            person.setName("Jack");
+            Post post = new Post();
+            post.setTitle("Post 1");
+            post.setContent("Post 1 desc");
 
-            Passport passport = new Passport();
-            passport.setNumber("GRU89564");
+            Comment comment = new Comment();
+            comment.setContent("Content comment 1");
+            comment.setPost(post);
 
-            person.setPassport(passport);
-            passport.setPerson(person);
-
-            em.persist(person);
-//            em.persist(passport);
+            em.persist(comment);
+            em.persist(post);
 
             em.getTransaction().commit();
         } finally {

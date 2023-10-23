@@ -46,8 +46,8 @@ public class CustomPersistenceUnitInfo implements PersistenceUnitInfo {
 
     @Override
     public List<String> getManagedClassNames() {
-        return List.of("by.flameksandr.jpa_c1_e1.entities.Person",
-                "by.flameksandr.jpa_c1_e1.entities.Passport"
+        return List.of("by.flameksandr.jpa_c1_e1.entities.Post",
+                "by.flameksandr.jpa_c1_e1.entities.Comment"
         );
     }
 
