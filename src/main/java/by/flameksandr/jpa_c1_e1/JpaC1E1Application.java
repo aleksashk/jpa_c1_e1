@@ -37,6 +37,7 @@ public class JpaC1E1Application {
             comment.setContent("Content comment 1");
 
             post.setComments(List.of(comment));
+            comment.setPost(post);
 
             em.persist(comment);
             em.persist(post);

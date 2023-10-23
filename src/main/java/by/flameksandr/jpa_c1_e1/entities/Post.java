@@ -15,8 +15,7 @@ public class Post {
 
     private String content;
 
-    @OneToMany
-    @JoinColumn(name = "post_id")
+    @OneToMany(mappedBy = "post")
     private List<Comment> comments;
 
     public int getId() {
