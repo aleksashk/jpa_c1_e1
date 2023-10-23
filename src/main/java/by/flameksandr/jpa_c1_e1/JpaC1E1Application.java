@@ -37,9 +37,13 @@ public class JpaC1E1Application {
             Group group1 = new Group();
             group1.setName("first_group");
             group1.setUsers(List.of(user1, user2));
+
             Group group2 = new Group();
             group2.setName("second_group");
             group2.setUsers(List.of(user2));
+
+            user1.setGroups(List.of(group1, group2));
+            user2.setGroups(List.of(group2));
 
             em.persist(user1);
             em.persist(user2);
