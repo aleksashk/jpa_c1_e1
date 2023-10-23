@@ -29,4 +29,12 @@ public class Passport {
     public void setNumber(String number) {
         this.number = number;
     }
+
+    @Override
+    public String toString() {
+        return "Passport{" +
+                "id=" + id +
+                ", number='" + number + '\'' +
+                '}';
+    }
 }

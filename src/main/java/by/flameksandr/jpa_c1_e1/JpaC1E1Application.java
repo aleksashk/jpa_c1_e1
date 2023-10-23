@@ -6,6 +6,7 @@ import by.flameksandr.jpa_c1_e1.entities.Person;
 import by.flameksandr.jpa_c1_e1.persistance.CustomPersistenceUnitInfo;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.TypedQuery;
 import org.hibernate.jpa.HibernatePersistenceProvider;
 
 import java.util.HashMap;
@@ -38,6 +39,10 @@ public class JpaC1E1Application {
 
             em.persist(person);
             em.persist(passport);
+
+            TypedQuery<Person> query = em.createQuery("select p from  Person p where p.passport.number = :number", Person.class);
+            query.setParameter("number", "ABC12345");
+            System.out.println(query.getResultList());
 
             em.getTransaction().commit();
         } finally {
