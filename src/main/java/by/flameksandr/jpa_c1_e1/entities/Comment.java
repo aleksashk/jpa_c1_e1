@@ -11,10 +11,6 @@ public class Comment {
 
     private String content;
 
-    @ManyToOne
-    @JoinColumn(name = "post")
-    private Post post;
-
     public int getId() {
         return id;
     }
@@ -29,13 +25,5 @@ public class Comment {
 
     public void setContent(String content) {
         this.content = content;
-    }
-
-    public Post getPost() {
-        return post;
-    }
-
-    public void setPost(Post post) {
-        this.post = post;
     }
 }

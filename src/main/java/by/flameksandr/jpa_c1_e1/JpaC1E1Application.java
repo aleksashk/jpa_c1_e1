@@ -9,6 +9,7 @@ import jakarta.persistence.EntityManagerFactory;
 import org.hibernate.jpa.HibernatePersistenceProvider;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class JpaC1E1Application {
@@ -34,7 +35,8 @@ public class JpaC1E1Application {
 
             Comment comment = new Comment();
             comment.setContent("Content comment 1");
-            comment.setPost(post);
+
+            post.setComments(List.of(comment));
 
             em.persist(comment);
             em.persist(post);
