@@ -6,7 +6,7 @@ import jakarta.persistence.Inheritance;
 import jakarta.persistence.InheritanceType;
 
 @Entity
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Product {
 
     @Id

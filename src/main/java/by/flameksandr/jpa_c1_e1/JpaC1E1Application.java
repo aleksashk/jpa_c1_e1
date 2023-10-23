@@ -18,7 +18,7 @@ public class JpaC1E1Application {
         String puName = "pu-name";
         Map<String, String> props = new HashMap<>();
         props.put("hibernate.show_sql", "true");
-        props.put("hibernate.hbm2ddl.auto", "none");//create, none, update
+        props.put("hibernate.hbm2ddl.auto", "create");//create, none, update
 
         EntityManagerFactory emf = new HibernatePersistenceProvider()
                 .createContainerEntityManagerFactory(new CustomPersistenceUnitInfo(puName),
