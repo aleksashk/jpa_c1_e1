@@ -12,6 +12,7 @@ public class Comment {
     private String content;
 
     @ManyToOne
+    @JoinColumn(name = "post")
     private Post post;
 
     public int getId() {
