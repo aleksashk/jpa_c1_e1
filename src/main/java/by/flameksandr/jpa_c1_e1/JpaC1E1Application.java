@@ -1,8 +1,8 @@
 package by.flameksandr.jpa_c1_e1;
 
 
-import by.flameksandr.jpa_c1_e1.entities.Comment;
-import by.flameksandr.jpa_c1_e1.entities.Post;
+import by.flameksandr.jpa_c1_e1.entities.Group;
+import by.flameksandr.jpa_c1_e1.entities.User;
 import by.flameksandr.jpa_c1_e1.persistance.CustomPersistenceUnitInfo;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
@@ -29,20 +29,23 @@ public class JpaC1E1Application {
         try {
             em.getTransaction().begin();
 
-            Post post = new Post();
-            post.setTitle("Post 1");
-            post.setContent("Post 1 desc");
+            User user1 = new User();
+            user1.setName("Patrik");
+            User user2 = new User();
+            user2.setName("Helen");
 
-            Comment comment1 = new Comment();
-            comment1.setContent("Content comment 1");
-            Comment comment2 = new Comment();
-            comment2.setContent("Content comment 1");
+            Group group1 = new Group();
+            group1.setName("first_group");
+            group1.setUsers(List.of(user1, user2));
+            Group group2 = new Group();
+            group2.setName("second_group");
+            group2.setUsers(List.of(user2));
 
-            post.setComments(List.of(comment1, comment2));
-            comment1.setPost(post);
-            comment2.setPost(post);
+            em.persist(user1);
+            em.persist(user2);
+            em.persist(group1);
+            em.persist(group2);
 
-            em.persist(post);
 
             em.getTransaction().commit();
         } finally {
