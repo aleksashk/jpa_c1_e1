@@ -11,7 +11,7 @@ public class Person {
 
     private String name;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "passport")
     private Passport passport;
 

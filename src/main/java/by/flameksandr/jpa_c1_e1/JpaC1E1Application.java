@@ -38,7 +38,7 @@ public class JpaC1E1Application {
             passport.setPerson(person);
 
             em.persist(person);
-            em.persist(passport);
+//            em.persist(passport);
 
             em.getTransaction().commit();
         } finally {
