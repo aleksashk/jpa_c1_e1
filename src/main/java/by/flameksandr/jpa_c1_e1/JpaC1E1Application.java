@@ -33,13 +33,15 @@ public class JpaC1E1Application {
             post.setTitle("Post 1");
             post.setContent("Post 1 desc");
 
-            Comment comment = new Comment();
-            comment.setContent("Content comment 1");
+            Comment comment1 = new Comment();
+            comment1.setContent("Content comment 1");
+            Comment comment2 = new Comment();
+            comment2.setContent("Content comment 1");
 
-            post.setComments(List.of(comment));
-            comment.setPost(post);
+            post.setComments(List.of(comment1, comment2));
+            comment1.setPost(post);
+            comment2.setPost(post);
 
-            em.persist(comment);
             em.persist(post);
 
             em.getTransaction().commit();
