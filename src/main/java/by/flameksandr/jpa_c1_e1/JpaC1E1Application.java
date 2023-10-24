@@ -4,10 +4,13 @@ package by.flameksandr.jpa_c1_e1;
 import by.flameksandr.jpa_c1_e1.persistance.CustomPersistenceUnitInfo;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.TypedQuery;
 import org.hibernate.jpa.HibernatePersistenceProvider;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 public class JpaC1E1Application {
 
@@ -26,7 +29,17 @@ public class JpaC1E1Application {
         try {
             em.getTransaction().begin();
 
+        String jpql = """
+                select s, e from Student s inner join s.enrollments e
+                """;
 
+            TypedQuery<Object[]> query = em.createQuery(jpql, Object[].class);
+            query.getResultList().forEach(o-> System.out.println(o[0] + " " + o[1]));
+
+            /**
+             * [s1, e1],
+             * [s2, e2],
+             */
 
             em.getTransaction().commit();
         } finally {
