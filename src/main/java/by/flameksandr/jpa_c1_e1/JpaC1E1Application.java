@@ -29,13 +29,14 @@ public class JpaC1E1Application {
         try {
             em.getTransaction().begin();
 
-            //create
-//            String jpql = "select p from Product p";
-//            String jpql = "select p from Product p where p.price > 5";
+            //select, update, delete
+            /*
+            String jpql = "select p from Product p";
+            String jpql = "select p from Product p where p.price > 5";
             String jpql = "select p from Product p where p.price > :price and p.name like :name";
 
-            //select p from Product p ===>  Fetch all the attributes fof the Product entity from the current context
-            //select * from Product ===> Fetch all the columns from the table product
+            select p from Product p ===>  Fetch all the attributes fof the Product entity from the current context
+            select * from Product ===> Fetch all the columns from the table product
             TypedQuery<Product> query = em.createQuery(jpql, Product.class);
             query.setParameter("price", 5);
             query.setParameter("name", "%a%");
@@ -44,6 +45,7 @@ public class JpaC1E1Application {
             for (Product p : resultList) {
                 System.out.println(p);
             }
+            */
 
             em.getTransaction().commit();
         } finally {
