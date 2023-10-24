@@ -5,7 +5,6 @@ import by.flameksandr.jpa_c1_e1.entities.Product;
 import by.flameksandr.jpa_c1_e1.persistance.CustomPersistenceUnitInfo;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.Query;
 import jakarta.persistence.TypedQuery;
 import org.hibernate.jpa.HibernatePersistenceProvider;
 
@@ -31,7 +30,9 @@ public class JpaC1E1Application {
             em.getTransaction().begin();
 
             //create
-            String jpql = "select p from Product p";
+//            String jpql = "select p from Product p";
+
+            String jpql = "select p from Product p where p.price > 5";
 
             //select p from Product p ===>  Fetch all the attributes fof the Product entity from the current context
             //select * from Product ===> Fetch all the columns from the table product
