@@ -50,13 +50,17 @@ public class JpaC1E1Application {
 //            String jpql = """
 //                    select new by.flameksandr.jpa_c1_e1.dto.EnrolledStudent(s, e) from Student s right join s.enrollments e
 //                    """;
+//
+//            String jpql = """
+//                    select s from Student s where
+//                        (select count(e) from Enrollment e where e.student.id = s.id) > 2
+//                    """;
 
             String jpql = """
-                    select s from Student s where 
-                        (select count(e) from Enrollment e where e.student.id = s.id) > 2
+                    select (select count(e) from Enrollment e where e.student= s) from Student s
                     """;
 
-            TypedQuery<Student> query = em.createQuery(jpql, Student.class);
+            TypedQuery<Long> query = em.createQuery(jpql, Long.class);
             query.getResultList().forEach(System.out::println);
 
             /**
