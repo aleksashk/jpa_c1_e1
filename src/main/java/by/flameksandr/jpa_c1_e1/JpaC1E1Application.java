@@ -1,6 +1,7 @@
 package by.flameksandr.jpa_c1_e1;
 
 
+import by.flameksandr.jpa_c1_e1.entities.Product;
 import by.flameksandr.jpa_c1_e1.persistance.CustomPersistenceUnitInfo;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
@@ -73,16 +74,9 @@ public class JpaC1E1Application {
 
              */
 
-            String jpql = """
-                    select p.name, AVG(p.price)
-                    from Product p
-                    group by p.name
-                    """;
-            TypedQuery<Object[]> query = em.createQuery(jpql, Object[].class);
-
-            query.getResultList().forEach(objects -> {
-                System.out.println(objects[0] + " " + objects[1]);
-            });
+            String jpql = "select p from Product p where p.name like 'Candy'";
+            TypedQuery<Product> query = em.createQuery(jpql, Product.class);
+            Product product = query.getSingleResult(); //EXCEPTION
 
             em.getTransaction().commit();
         } finally {
