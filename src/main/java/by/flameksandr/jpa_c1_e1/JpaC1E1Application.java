@@ -8,6 +8,7 @@ import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.TypedQuery;
 import org.hibernate.jpa.HibernatePersistenceProvider;
 
+import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -55,14 +56,25 @@ public class JpaC1E1Application {
 
             System.out.println(avg);
 
-            */
-
             String jpql = "select count(p) from Product p";// AVG, MIN, MAX, SUM...
             TypedQuery<Long> query = em.createQuery(jpql, Long.class);
 
             Long count = query.getSingleResult();
 
             System.out.println(count);
+
+             */
+
+            String jpql1 = "select min(p.price) from Product p";// AVG, MIN, MAX, SUM...
+            String jpql2 = "select max(p.price) from Product p";// AVG, MIN, MAX, SUM...
+            TypedQuery<BigDecimal> query1 = em.createQuery(jpql1, BigDecimal.class);
+            TypedQuery<BigDecimal> query2 = em.createQuery(jpql2, BigDecimal.class);
+
+            BigDecimal min = query1.getSingleResult();
+            BigDecimal max = query2.getSingleResult();
+
+            System.out.println("min price: " + min);
+            System.out.println("max price: " + max);
 
             em.getTransaction().commit();
         } finally {
