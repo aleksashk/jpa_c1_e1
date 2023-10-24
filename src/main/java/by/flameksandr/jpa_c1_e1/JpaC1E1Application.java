@@ -1,6 +1,7 @@
 package by.flameksandr.jpa_c1_e1;
 
 
+import by.flameksandr.jpa_c1_e1.dto.CountedEnrollmentForStudent;
 import by.flameksandr.jpa_c1_e1.entities.Student;
 import by.flameksandr.jpa_c1_e1.persistance.CustomPersistenceUnitInfo;
 import jakarta.persistence.EntityManager;
@@ -57,11 +58,11 @@ public class JpaC1E1Application {
 //                    """;
 
             String jpql = """
-                    select (select count(e) from Enrollment e where e.student= s) from Student s
+                    select new by.flameksandr.jpa_c1_e1.dto.CountedEnrollmentForStudent (s, (select count(e) from Enrollment e where e.student= s)) from Student s
                     """;
 
-            TypedQuery<Long> query = em.createQuery(jpql, Long.class);
-            query.getResultList().forEach(System.out::println);
+            TypedQuery<CountedEnrollmentForStudent> query = em.createQuery(jpql, CountedEnrollmentForStudent.class);
+            query.getResultList().forEach(o-> System.out.println(o.student() + " " + o.count()));
 
             /**
              * [s1, e1],
