@@ -11,6 +11,7 @@ import org.hibernate.jpa.HibernatePersistenceProvider;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 public class JpaC1E1Application {
 
@@ -77,14 +78,17 @@ public class JpaC1E1Application {
 
             String jpql = "select p from Product p where p.name like 'Candy'";
             TypedQuery<Product> query = em.createQuery(jpql, Product.class);
-            Product product = null;
+            Optional<Product> product;
             try {
-                product = query.getSingleResult();
+                product = Optional.of(query.getSingleResult());
             } catch (NoResultException e) {
-                System.out.println("No result found. " + e);
+                product = Optional.empty();
             }
 
-            System.out.println(product);
+            product.ifPresentOrElse(
+                    System.out::println,
+                    ()-> System.out.println("Product not found")
+            );
 
             em.getTransaction().commit();
         } finally {
