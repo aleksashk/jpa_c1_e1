@@ -12,10 +12,10 @@ public class Enrollment {
     @Id
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     private Student student;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     private Course course;
 
     private LocalDate enrollmentDate;
