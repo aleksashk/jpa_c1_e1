@@ -47,6 +47,23 @@ public class JpaC1E1Application {
             }
             */
 
+            /*
+            String jpql = "select avg(p.price) from Product p";// AVG, MIN, MAX, SUM...
+            TypedQuery<Double> query = em.createQuery(jpql, Double.class);
+
+            Double avg = query.getSingleResult();
+
+            System.out.println(avg);
+
+            */
+
+            String jpql = "select count(p) from Product p";// AVG, MIN, MAX, SUM...
+            TypedQuery<Long> query = em.createQuery(jpql, Long.class);
+
+            Long count = query.getSingleResult();
+
+            System.out.println(count);
+
             em.getTransaction().commit();
         } finally {
             em.close();
