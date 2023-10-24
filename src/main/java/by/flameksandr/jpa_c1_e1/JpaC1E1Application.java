@@ -73,7 +73,11 @@ public class JpaC1E1Application {
 
              */
 
-            String jpql = "select p.name, p.price from Product p";
+            String jpql = """
+                    select p.name, AVG(p.price)
+                    from Product p
+                    group by p.name
+                    """;
             TypedQuery<Object[]> query = em.createQuery(jpql, Object[].class);
 
             query.getResultList().forEach(objects -> {
