@@ -1,6 +1,7 @@
 package by.flameksandr.jpa_c1_e1.entities;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 
@@ -11,10 +12,10 @@ public class Enrollment {
     @Id
     private Long id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private Student student;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private Course course;
 
     private LocalDate enrollmentDate;
