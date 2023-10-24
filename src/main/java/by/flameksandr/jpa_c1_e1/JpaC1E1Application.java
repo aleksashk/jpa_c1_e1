@@ -5,6 +5,7 @@ import by.flameksandr.jpa_c1_e1.entities.Product;
 import by.flameksandr.jpa_c1_e1.persistance.CustomPersistenceUnitInfo;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.NoResultException;
 import jakarta.persistence.TypedQuery;
 import org.hibernate.jpa.HibernatePersistenceProvider;
 
@@ -76,7 +77,14 @@ public class JpaC1E1Application {
 
             String jpql = "select p from Product p where p.name like 'Candy'";
             TypedQuery<Product> query = em.createQuery(jpql, Product.class);
-            Product product = query.getSingleResult(); //EXCEPTION
+            Product product = null;
+            try {
+                product = query.getSingleResult();
+            } catch (NoResultException e) {
+                System.out.println("No result found. " + e);
+            }
+
+            System.out.println(product);
 
             em.getTransaction().commit();
         } finally {
