@@ -1,16 +1,13 @@
 package by.flameksandr.jpa_c1_e1;
 
 
-import by.flameksandr.jpa_c1_e1.entities.Product;
 import by.flameksandr.jpa_c1_e1.persistance.CustomPersistenceUnitInfo;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.TypedQuery;
 import org.hibernate.jpa.HibernatePersistenceProvider;
 
-import java.math.BigDecimal;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class JpaC1E1Application {
@@ -63,8 +60,6 @@ public class JpaC1E1Application {
 
             System.out.println(count);
 
-             */
-
             String jpql1 = "select min(p.price) from Product p";// AVG, MIN, MAX, SUM...
             String jpql2 = "select max(p.price) from Product p";// AVG, MIN, MAX, SUM...
             TypedQuery<BigDecimal> query1 = em.createQuery(jpql1, BigDecimal.class);
@@ -75,6 +70,15 @@ public class JpaC1E1Application {
 
             System.out.println("min price: " + min);
             System.out.println("max price: " + max);
+
+             */
+
+            String jpql = "select p.name, p.price from Product p";
+            TypedQuery<Object[]> query = em.createQuery(jpql, Object[].class);
+
+            query.getResultList().forEach(objects -> {
+                System.out.println(objects[0] + " " + objects[1]);
+            });
 
             em.getTransaction().commit();
         } finally {
