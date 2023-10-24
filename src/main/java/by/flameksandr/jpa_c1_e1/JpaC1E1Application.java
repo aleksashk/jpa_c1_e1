@@ -1,6 +1,7 @@
 package by.flameksandr.jpa_c1_e1;
 
 
+import by.flameksandr.jpa_c1_e1.dto.EnrolledStudent;
 import by.flameksandr.jpa_c1_e1.persistance.CustomPersistenceUnitInfo;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
@@ -37,14 +38,21 @@ public class JpaC1E1Application {
 //                    select s, e from Student s, Enrollment e
 //                    where s.id = e.student.id
 //                    """;
-
+//
+//            String jpql = """
+//                    select s, e from Student s, Enrollment e
+//                    where s = e.student
+//                    """;
+//
+//            String jpql = """
+//                    select s, e from Student s right join s.enrollments e
+//                    """;
             String jpql = """
-                    select s, e from Student s, Enrollment e
-                    where s = e.student
+                    select new by.flameksandr.jpa_c1_e1.dto.EnrolledStudent(s, e) from Student s right join s.enrollments e
                     """;
 
-            TypedQuery<Object[]> query = em.createQuery(jpql, Object[].class);
-            query.getResultList().forEach(o -> System.out.println(o[0] + " " + o[1]));
+            TypedQuery<EnrolledStudent> query = em.createQuery(jpql, EnrolledStudent.class);
+            query.getResultList().forEach(o -> System.out.println(o.student() + " " + o.enrollment()));
 
             /**
              * [s1, e1],
