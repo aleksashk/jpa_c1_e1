@@ -33,9 +33,14 @@ public class JpaC1E1Application {
 //            String jpql = """
 //                    select s, e from Student s join s.enrollments e
 //                    """;
+//            String jpql = """
+//                    select s, e from Student s, Enrollment e
+//                    where s.id = e.student.id
+//                    """;
+
             String jpql = """
                     select s, e from Student s, Enrollment e
-                    where s.id = e.student.id
+                    where s = e.student
                     """;
 
             TypedQuery<Object[]> query = em.createQuery(jpql, Object[].class);
